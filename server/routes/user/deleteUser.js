@@ -1,11 +1,11 @@
 'use strict'
 
 module.exports = async function (fastify, opts) {
-  fastify.delete('/:id', async function (request, reply) {
+  fastify.delete('/', async function (request, reply) {
 	const client = await fastify.pg.connect()
 	try {
 		const { rows } = await client.query(
-			`DELETE FROM public.user WHERE id = ${request.params.id}`
+			`DELETE FROM public.user WHERE id = ${request.body.id}`
 		)
 		const reponse = {
             "status" : "success",
