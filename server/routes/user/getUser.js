@@ -5,11 +5,14 @@ module.exports = async function (fastify, opts) {
 	const client = await fastify.pg.connect()
 	try {
 		const { rows } = await client.query(
-			`SELECT * FROM public.user WHERE id = ${request.params.id}`
+			`SELECT id, username, type FROM public.user WHERE id = ${request.params.id}`
 		)
+		const reponse = {
+			"user": rows[0]
+		}
 		reply
 			.code(200)
-			.send(rows)
+			.send(reponse)
 	} finally {
 		client.release()
 	}
