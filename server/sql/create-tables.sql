@@ -10,7 +10,7 @@ CREATE TABLE public.category (
 
 CREATE TABLE public.user (
 	id integer generated always as identity primary key,
-	name varchar(20) unique,
+	username varchar(20) unique,
 	type varchar(10)
 );
 
@@ -20,7 +20,7 @@ CREATE TABLE public.product (
 	category_id integer not null,
 	name varchar(100) not null,
 	price integer not null,
-	brand varchar(30),
+	brand varchar(50),
 	status varchar(10) not null,
 	CONSTRAINT fk_category_id FOREIGN KEY(category_id) REFERENCES "category"(id) ON DELETE CASCADE ON UPDATE CASCADE,
 	CONSTRAINT fk_user_id FOREIGN KEY(user_id) REFERENCES "user"(id) ON DELETE CASCADE ON UPDATE CASCADE
