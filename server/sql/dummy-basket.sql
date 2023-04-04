@@ -1,0 +1,10 @@
+insert into public.basket (user_id, product_id, quantity) values (2, 8, 5);
+insert into public.basket (user_id, product_id, quantity) values (2, 9, 3);
+insert into public.basket (user_id, product_id, quantity) values (2, 2, 5);
+insert into public.basket (user_id, product_id, quantity) values (2, 19, 1);
+insert into public.basket (user_id, product_id, quantity) values (1, 4, 5);
+insert into public.basket (user_id, product_id, quantity) values (1, 16, 1);
+insert into public.basket (user_id, product_id, quantity) values (1, 15, 5);
+insert into public.basket (user_id, product_id, quantity) values (1, 20, 1);
+insert into public.basket (user_id, product_id, quantity) values (2, 19, 3);
+insert into public.basket (user_id, product_id, quantity) values (2, 7, 4);
