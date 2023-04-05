@@ -54,7 +54,41 @@ module.exports =  async function getBasket(fastify, opts) {
       await client.query(
         'INSERT INTO public.basket(user_id, product_id, quantity) VALUES($1, $2, $3)', [user_id, product_id, quantity]
       )
-      reply.code(201).send(rows)
+
+      const { rows } = await client.query(
+        `SELECT public.basket.id, 
+          public.product.id AS product_id, public.product.brand, public.product.name, public.product.price, public.product.status, public.user.username, public.category.name AS category, public.basket.quantity
+        FROM public.basket
+            INNER JOIN public.user ON public.basket.user_id = public.user.id
+            INNER JOIN public.product ON public.basket.product_id = public.product.id
+            INNER JOIN public.category ON public.product.category_id = public.category.id
+        WHERE public.basket.user_id = $1`,
+        [user_id]
+        )
+        
+      const baskets = rows?.map(element => {
+        const basket = {
+          "id" : element.id,
+          "product" : {
+            "id": element.product_id,
+            "category": element.category,
+            "seller": element.username,
+            "name": element.name,
+            "price": element.price,
+            "brand": element.brand,
+            "status": element.status
+          },
+          "quantity" : element.quantity
+        }
+
+        return basket
+      });
+
+      const response = {
+        "baskets" : baskets
+      }
+
+      reply.code(201).send(response)
     } finally {
       client.release()
     }
