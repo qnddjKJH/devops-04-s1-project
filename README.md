@@ -17,21 +17,18 @@
 
 | Method | Path | Description | Request Header | Request Body | Response Status Code | Response Body |
 | --- | --- | --- | --- | --- | --- | --- |
-| GET | /product | 전체 상품 조회 | - | - | 200 OK | List<https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21> |
-| GET | /product/{product-id} | 개별 상품 조회 | - | - | 200 OK | https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21 |
-| POST | /product | 상품 등록 | - | https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21 | 201 Created | List<https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21> |
-| GET | https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21 | 사용자 장바구니 조회 | user-id : {user-id} | - | 200 OK | https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21 |
-| POST | https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21 | 사용자 장바구니 상품 등록 | - | https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21 | 201 Created | List<https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21> |
-| PATCH | https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21 | 사용자 장바구니 상품 수량 수정 | - | https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21 | 200 OK | https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21 |
-| DELETE | https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21 | 사용자 장바구니 상품 제외 | - | - | 200 OK | {
-status : string,
-message : string
-} |
-| GET | /user | 전체 사용자 조회 | - | - | 200 OK | List<https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21> |
-| GET | /user/{user-id} | 개별 사용자 조회 | - | - | 200 OK | https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21 |
-| POST | /user | 개별 사용자 등록 | - | https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21 | 201 Created | https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21 |
-| PATCH | /user/{user-id} | 개별 사용자 수정 | - | https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21 | 200 OK | https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21 |
-| DELETE | /user/{user-id} | 개별 사용자 삭제 | - | - | 200 OK | https://www.notion.so/52c451c26a6d436dbc3801f23133233d?pvs=21 |
+| GET | /product | 전체 상품 조회 | - | - | 200 OK | List\<product> |
+| GET | /product/{product-id} | 개별 상품 조회 | - | - | 200 OK | product |
+| POST | /product | 상품 등록 | - | create-product | 201 Created | List\<product> |
+| GET | /basket | 사용자 장바구니 조회 | user-id : {user-id} | - | 200 OK | List\<basket> |
+| POST | /basket | 사용자 장바구니 상품 등록 | - | create-basket | 201 Created | List\<basket> |
+| PATCH | /basket | 사용자 장바구니 상품 수량 수정 | - | update-basket | 200 OK | basket |
+| DELETE | /basket/{basket-id} | 사용자 장바구니 상품 제외 | - | - | 200 OK | { status : string, message : string } |
+| GET | /user | 전체 사용자 조회 | - | - | 200 OK | List\<user> |
+| GET | /user/{user-id} | 개별 사용자 조회 | - | - | 200 OK | user |
+| POST | /user | 개별 사용자 등록 | - | create-user | 201 Created | user |
+| PATCH | /user/{user-id} | 개별 사용자 수정 | - | update-user | 200 OK | user |
+| DELETE | /user/{user-id} | 개별 사용자 삭제 | - | - | 200 OK | { status : string, message : string } |
 
 # 구현 결과
 - 사용자는 모든 상품을 조회할 수 있다
